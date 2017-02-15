@@ -309,7 +309,7 @@ message ParamSpec {
 // NOTE
 // Update the next available ID when you add a new LayerParameter field.
 //
-// LayerParameter next available layer-specific ID: 148 (last added: recurrent_param)
+// LayerParameter next available layer-specific ID: 149 (last added: recurrent_param)
 message LayerParameter {
   optional string name = 1; // the layer name
   optional string type = 2; // the layer type
@@ -386,6 +386,7 @@ message LayerParameter {
   optional InputParameter input_param = 143;
   optional LogParameter log_param = 134;
   optional LRNParameter lrn_param = 118;
+  optional LSTMCTPNParameter lstm_param = 148;
   optional MemoryDataParameter memory_data_param = 119;
   optional MVNParameter mvn_param = 120;
   optional ParameterParameter parameter_param = 145;
@@ -405,7 +406,7 @@ message LayerParameter {
   optional TanHParameter tanh_param = 127;
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
-  optional TransposeParameter transpose_param=147;
+  optional TransposeParameter transpose_param = 147;
   optional WindowDataParameter window_data_param = 129;
 }
 
@@ -439,6 +440,15 @@ message TransposeParameter {
   // transpose_param { dim: 3 dim: 0 dim: 2 dim: 1 }
   // ie, if the i-th dim has value n, then the i-th axis of top is equal to the n-th axis of bottom.
   repeated int32 dim=1;
+}
+
+// Message that stores parameters used by LSTMCTPNParameter
+message LSTMCTPNParameter {
+  optional uint32 num_output = 1; // The number of outputs for the layer
+  optional float clipping_threshold = 2 [default = 0.0];
+  optional FillerParameter weight_filler = 3; // The filler for weight
+  optional FillerParameter bias_filler = 4; // The filler for the bias
+  optional uint32 batch_size = 5 [default = 1];
 }
 
 // Message that stores parameters shared by loss layers
@@ -532,7 +542,7 @@ message BiasParameter {
   // For example, if bottom[0] is 4D with shape 100x3x40x60, the output
   // top[0] will have the same shape, and bottom[1] may have any of the
   // following shapes (for the given value of axis):
-  //    (axis == 0 == -4) 100; 100x3; 100x3x40; 100x3x40x60
+  //    (axis == 0 == -4) 100; 100x3; 100x3x40; 100x3x4/0x60
   //    (axis == 1 == -3)          3;     3x40;     3x40x60
   //    (axis == 2 == -2)                   40;       40x60
   //    (axis == 3 == -1)                                60

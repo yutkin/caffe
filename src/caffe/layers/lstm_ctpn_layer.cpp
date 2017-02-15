@@ -1,6 +1,6 @@
 #include <vector>
 
-#include "caffe/layers/transpose_layer.hpp"
+#include "caffe/layers/lstm_ctpn_layer.hpp"
 
 namespace caffe {
 

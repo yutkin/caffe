@@ -1,4 +1,6 @@
-#include "caffe/common_layers.hpp"
+#include <vector>
+
+#include "caffe/layers/transpose_layer.hpp"
 
 namespace caffe {
 

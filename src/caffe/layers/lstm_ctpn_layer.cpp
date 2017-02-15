@@ -1,6 +1,8 @@
 #include <vector>
 
+#include "caffe/layer.hpp"
 #include "caffe/layers/lstm_ctpn_layer.hpp"
+#include "caffe/net.hpp"
 
 namespace caffe {
 

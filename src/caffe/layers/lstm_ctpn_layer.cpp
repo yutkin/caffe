@@ -4,6 +4,7 @@
 #include "caffe/layers/lstm_ctpn_layer.hpp"
 #include "caffe/net.hpp"
 #include "caffe/filler.hpp"
+#include "caffe/util/math_functions.hpp"
 
 namespace caffe {
 

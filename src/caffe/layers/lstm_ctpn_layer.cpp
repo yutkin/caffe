@@ -3,6 +3,7 @@
 #include "caffe/layer.hpp"
 #include "caffe/layers/lstm_ctpn_layer.hpp"
 #include "caffe/net.hpp"
+#include "caffe/filler.hpp"
 
 namespace caffe {
 

@@ -432,6 +432,15 @@ message TransformationParameter {
   optional bool force_gray = 7 [default = false];
 }
 
+// Message for Transpose Parameter
+message TransposeParameter {
+  // For example, if you want to transpose NxCxHxW into WxNxHxC, 
+  // the parameter should be the following:
+  // transpose_param { dim: 3 dim: 0 dim: 2 dim: 1 }
+  // ie, if the i-th dim has value n, then the i-th axis of top is equal to the n-th axis of bottom.
+  repeated int32 dim=1;
+}
+
 // Message that stores parameters shared by loss layers
 message LossParameter {
   // If specified, ignore instances with the given label.

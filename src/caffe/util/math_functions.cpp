@@ -373,7 +373,7 @@ void caffe_cpu_scale<double>(const int n, const double alpha, const double *x,
 }
 
 template <>
-void caffe_bound(const int N, const float* a, const float min, 
+void caffe_bound<float>(const int N, const float* a, const float min, 
     const float max, float* y) {
   for (int i = 0; i < N; ++i) {
     y[i] = std::min(std::max(a[i], min), max);
@@ -381,7 +381,7 @@ void caffe_bound(const int N, const float* a, const float min,
 }
 
 template <>
-void caffe_bound(const int N, const double* a, const double min, 
+void caffe_bound<double>(const int N, const double* a, const double min, 
     const double max, double* y) {
   for (int i = 0; i < N; ++i) {
     y[i] = std::min(std::max(a[i], min), max);
